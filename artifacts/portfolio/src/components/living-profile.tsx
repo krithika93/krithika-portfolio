@@ -22,8 +22,8 @@ export function LivingProfile() {
           const json = await response.json();
           setData(json);
         }
-      } catch (error) {
-        console.error("Failed to fetch living profile", error);
+      } catch {
+        // silently ignore fetch failures — widget stays hidden
       }
     };
 

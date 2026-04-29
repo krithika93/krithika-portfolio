@@ -109,10 +109,6 @@ export default function CaseStudy() {
           <section id="proposed-solutions" className="scroll-mt-24 mb-16">
             <h2 className="text-3xl mb-6">Proposed Solutions and SFT/RL Workflow</h2>
             
-            <div className="w-full h-64 border-2 border-dashed border-border rounded-lg bg-muted/20 flex items-center justify-center mb-8 text-muted-foreground font-mono text-sm">
-              {"{TODO: architecture diagram}"}
-            </div>
-
             <h3 id="core-pillars" className="scroll-mt-24 text-2xl mt-8 mb-4">Core Architectural Pillars</h3>
             <ul className="space-y-3 list-disc pl-6 mb-8">
               <li><strong>Latent Associative Grounding Architecture:</strong> Replacing discrete textual reasoning with K=5 continuous Latent Visual Reasoning (&lt;lvr&gt;) tokens acting as Visual Information Containers to mathematically compress visual evidence before generating an answer.</li>
@@ -129,6 +125,10 @@ export default function CaseStudy() {
 
             <h3 id="workflow-stages" className="scroll-mt-24 text-2xl mt-8 mb-4">Workflow Stages</h3>
             <Timeline stages={workflowStages} />
+
+            <div className="w-full h-64 border-2 border-dashed border-border rounded-lg bg-muted/20 flex items-center justify-center mt-8 text-muted-foreground font-mono text-sm">
+              {"{TODO: architecture diagram}"}
+            </div>
           </section>
 
           <section id="theoretical-framework" className="scroll-mt-24 mb-16">
