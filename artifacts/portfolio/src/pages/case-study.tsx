@@ -4,6 +4,7 @@ import { CalloutCard } from "@/components/callout-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PageHead } from "@/components/page-head";
+import architectureDiagram from "@/assets/architecture-diagram.png";
 
 const buildDate = new Date(__BUILD_DATE__).toLocaleDateString("en-US", {
   month: "long",
@@ -126,9 +127,26 @@ export default function CaseStudy() {
             <h3 id="workflow-stages" className="scroll-mt-24 text-2xl mt-8 mb-4">Workflow Stages</h3>
             <Timeline stages={workflowStages} />
 
-            <div className="w-full h-64 border-2 border-dashed border-border rounded-lg bg-muted/20 flex items-center justify-center mt-8 text-muted-foreground font-mono text-sm">
-              {"{TODO: architecture diagram}"}
-            </div>
+            <figure className="mt-8" data-testid="figure-architecture-diagram">
+              <a
+                href={architectureDiagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-lg border border-border bg-white dark:bg-neutral-900 p-4 sm:p-6 overflow-hidden hover:border-primary/40 transition-colors"
+                aria-label="Open full-size architecture diagram in a new tab"
+                data-testid="link-architecture-diagram"
+              >
+                <img
+                  src={architectureDiagram}
+                  alt="End-to-end architecture diagram showing the SFT and RL workflow for the Visual Metonymy framework, including teacher-trace SFT cold-start, NodeRAG priors, latent visual reasoning tokens, curriculum sensory gating, and GRPO optimization."
+                  className="w-full h-auto mx-auto block"
+                  loading="lazy"
+                />
+              </a>
+              <figcaption className="mt-3 text-sm text-muted-foreground text-center">
+                End-to-end SFT &rarr; RL workflow for the Visual Metonymy framework. Click to open the full-size diagram.
+              </figcaption>
+            </figure>
           </section>
 
           <section id="theoretical-framework" className="scroll-mt-24 mb-16">
