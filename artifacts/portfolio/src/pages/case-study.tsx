@@ -110,7 +110,7 @@ export default function CaseStudy() {
             <h2 className="text-3xl mb-6">Proposed Solutions and SFT/RL Workflow</h2>
             
             <div className="w-full h-64 border-2 border-dashed border-border rounded-lg bg-muted/20 flex items-center justify-center mb-8 text-muted-foreground font-mono text-sm">
-              TODO: architecture diagram
+              {"{TODO: architecture diagram}"}
             </div>
 
             <h3 id="core-pillars" className="scroll-mt-24 text-2xl mt-8 mb-4">Core Architectural Pillars</h3>
