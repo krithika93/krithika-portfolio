@@ -39,7 +39,7 @@ Personal research portfolio for Krithika Rajendran. React 19 + Vite 7 SPA.
 - `VITE_GITHUB_URL` — GitHub profile URL; used in Landing CTA button and Case Study footer link
 - `VITE_LINKEDIN_URL` — LinkedIn profile URL; used in global footer
 - `VITE_CONTACT_EMAIL` — Contact email; used in global footer mailto link
-- `VITE_DEEPTUTOR_URL` — DeepTutor service base URL; used by Living Profile widget on /vision
+- `VITE_DEEPTUTOR_URL` — (local development only) DeepTutor service base URL; used by Living Profile widget on /vision. Run DeepTutor locally and set this in a local `.env` file. Widget is silently hidden when this var is unset.
 - `VITE_SITE_URL` — (optional) Production base URL used for canonical links and og:url/og:image in PageHead; defaults to `https://krithikarajendran.replit.app`
 
 **Complete file inventory (every file created for the portfolio artifact):**
