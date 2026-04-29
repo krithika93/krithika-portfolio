@@ -1,0 +1,116 @@
+Build a personal portfolio for Krithika Rajendran in Next.js 14 (App Router) + TailwindCSS + shadcn/ui + Framer Motion + next-mdx-remote. Apple-clean visual language: white / off-white background, deep navy (#0A0F2C), single accent (#3D7BFF), system font stack, generous whitespace, large hero type, dark mode toggle, subtle Framer fade-ins only.
+Strict content rule
+Do not invent technical claims, numbers, model names, or architecture details. The only sources of truth are:
+The literal copy I provide for the Landing, Builder, Vision, and Notes pages.
+The Curated Case Study text in the ## Curated Case Study block below — used only on /case-study/visual-metonymy.
+If any section needs content I haven't supplied, render a {TODO: needs source} placeholder instead of writing your own copy. Do not fetch anything from the web.
+Pages (5 routes)
+
+1. / — Landing (Hook + About Me)
+Hero (top fold):
+Headline: "Bridging the Perception Gap: Latent Reasoning for Edge-Deployed AI."
+Sub-headline: "AI/ML Researcher and Engineer specializing in hardware-aware multimodal architectures. I transition complex cognitive theories (like visual metonymy) into deployable, low-latency systems under strict edge constraints — 16GB VRAM, A-series Neural Engines."
+One-liner positioning under the sub: "I close the 21% gap between human and VLM associative reasoning — by replacing verbose Chain-of-Thought with K=5 latent tokens, grounded in NodeRAG priors."
+CTAs: [Read the Visual Metonymy case study] → /case-study/visual-metonymy, [GitHub] → env var.
+About strip (3 pillar cards, equal width):
+Researcher — "I operationalize Peirce's Semiotic Triad in vision-language models, treating Representamen → Interpretant → Object as a trainable architecture, not a metaphor."
+Engineer — "I design under hard constraints: 16GB VRAM, 4-bit NF4 quantization, PagedAdamW8bit. Constraint-driven engineering is the work, not the obstacle."
+Builder — "I ship reasoning models for the edge — Qwen2.5-VL-3B with LoRA adapters, GRPO rollouts, and a Tri-Loss objective trained against verifiable multiple-choice rewards."
+"Currently focused on" strip (single row, 4 mini-tags): Latent Visual Reasoning (<lvr>) tokens · NodeRAG cognitive priors · VMR-RLVR with GRPO · Apple Neural Engine deployment
+Proof line (small, centered, above the fold's bottom): "Human baseline 86.9% · VLM baseline 65.9% · the 21-point gap is what I work on."
+Use only the literal copy above — no rewording, no extra paragraphs.
+
+2. /case-study/visual-metonymy — Visual Metonymy Case Study (crown jewel) Render the case-study content from /content/case-study.mdx. Use a sticky left TOC with these section anchors, in this exact order:
+Problem
+Definition
+Proposed Solutions and SFT/RL Workflow
+Core Architectural Pillars
+Key Concepts Integrated into the Solution
+Workflow Stages
+Theoretical Framework
+Technical Design Specification (Landscape Analysis & Research Proposal)
+Principal Decisions Redirecting the Architecture
+Key Concepts Under Study and Required Decisions
+Evaluation Metrics and Failure Modes
+Aspects Yet to be Finalized
+Style each section as follows: short intro paragraph (only what I provide), then well-formatted bullet/definition cards. The "Workflow Stages" subsection must render as a horizontal 3-step timeline (Stage 0 → Stage 1 → Stage 2) with hover tooltips. The "Technical Design Specification" landscape analysis must render as a comparison table (Model family • Approach • Perception Gap), one row per family from my text. The "Failure Modes" must render as red-tinted callout cards. The "Aspects Yet to be Finalized" must render with an "Open Question" badge so reviewers see I'm honest about what's unresolved.
+Do not add a system architecture diagram unless I supply one — leave a {TODO: architecture diagram} placeholder block at the end of section 3.
+Add a small footer: "Last reviewed: {build date}" plus an outbound link [Discuss this on GitHub].
+3. /builder — Builder's Mindset Three columns of competencies, exactly:
+Architecture & Training: Reinforcement Learning (GRPO, RLVR), LoRA / QLoRA Optimization, Reward Shaping (AWAD).
+Data & Knowledge Graphs: NodeRAG, ConceptNet, Grounding DINO (Automated Trajectory Synthesis).
+Systems & Deployment: VRAM Lifecycle Management, 4-bit NF4 Quantization, PagedAdamW8bit, Apple A-series Neural Engine profiles.
+Below grid, a callout block with this exact text: "I believe artificial intelligence is bottlenecked by text, not by scale. By forcing complex reasoning through a K=5 latent bottleneck within a 16GB VRAM envelope, I optimize for representational flexibility over brute compute. I design for the edge."
+4. /vision — Vision & Future Work Lead: "Translating visual metonymy into Developer Tooling and EdTech." Body: "My long-term research trajectory applies Latent Associative Grounding to UI and workflow analysis. By classifying screenshots, stack-traces, and CLI animations as Representamens of abstract concepts, I aim to generate 'visual metonymical charts' — accelerating the theory-to-implementation gap for engineers and helping them master complex frameworks instantly without the cognitive overload of text-heavy tutorials."
+Below: a small Living Profile widget that fetches ${process.env.NEXT_PUBLIC_DEEPTUTOR_URL}/living-profile every 30 seconds and renders three short markdown blocks — What I've Studied, How I Learn, Where I'm Heading. Hide the widget silently if the env var is missing.
+Global
+Top nav: Home / Case Study / Builder / Vision / Notes.
+Footer: contact email (process.env.CONTACT_EMAIL), GitHub, LinkedIn, build timestamp.
+Replit Secrets needed: NEXT_PUBLIC_DEEPTUTOR_URL, NEXT_PUBLIC_GITHUB_URL, NEXT_PUBLIC_LINKEDIN_URL, CONTACT_EMAIL.
+SEO meta + OpenGraph on each page.
+When you finish, list every file you created and every {TODO} marker by location.
+
+Curated Case Study
+Save the following text verbatim to /content/case-study.mdx. Use it as the only content source for /case-study/visual-metonymy. You may add Markdown formatting (headings, bullets, tables, callouts) but you may not add new sentences, examples, or numbers.
+# Visual Metonymy — Curated Case Study
+
+## Problem
+- **The Associative Reasoning Deficit:** Vision-Language Models (VLMs) currently suffer from a massive 21% performance gap compared to human baselines (86.9% human vs. 65.9% VLM) when attempting to resolve Visual Metonymy.
+- **The Perception Gap:** Current models experience a Perception Gap where they learn what to say through textual mimicry, but fail to learn where to look, resulting in blind guessing and reliance on language priors over verified visual evidence.
+- **The Curse of CoT:** Forcing a model to generate verbose, text-based Chain-of-Thought (CoT) to solve visual tasks causes context dilution, pushing the original visual constraints out of focus and leading to hallucinatory drift.
+
+## Definition
+- **Visual Metonymy:** A form of indirect communication where an image evokes a physically absent, abstract concept via associated visual cues rather than explicit depiction.
+- **Associative Grounding:** The cognitive and mathematical process of connecting literal visual cues (the Representamens) to the absent abstract concept, which requires external logical mapping to resolve controlled ambiguity.
+
+## Proposed Solutions and SFT/RL Workflow
+
+### Core Architectural Pillars
+- **Latent Associative Grounding Architecture:** Replacing discrete textual reasoning with K=5 continuous Latent Visual Reasoning (`<lvr>`) tokens acting as Visual Information Containers to mathematically compress visual evidence before generating an answer.
+- **Verifiable Multiple-Choice Reformulation (VMR):** Restructuring subjective, open-ended tasks into strict A/B/C/D multiple-choice formats using Partially Literal Distractors, enabling objective, deterministic rewards.
+- **NodeRAG Integration:** Supplying explicit cognitive priors by retrieving a fully nodalized taxonomy of Entities (N), Relationships (R), and Semantic Units (S) to establish the associative links between objects before visual processing begins.
+
+### Key Concepts Integrated into the Solution
+- **Reasoning By Contrast — The Mathematical Architecture of Abstract Reasoning via Contrastive Learning:** The model generates multiple trajectories that are evaluated within a deterministic multiple-choice environment via VMR to navigate "Hard Negatives". Through Group Relative Policy Optimization (GRPO), it mathematically penalizes the superficial shortcut (yielding a Negative Advantage or reward of 0) and reinforces the abstract leap (yielding a Positive Advantage or reward of +1). Ultimately, this forces the model to internalize logical boundaries and safely bypass literal bias.
+- **Cognitive Priors and Architecture of Latent Reasoning:** The framework establishes a "thinking before looking" paradigm to prevent shortcut learning and filter diffuse noise. This is concretely integrated through NodeRAG Graph Injection (providing explicitly structured logical rules), Concept-Conditioned Seeding (initializing the latent bottleneck with semantic search priors), and Curriculum Sensory Gating (CSG) (applying a mathematical mask to physically throttle direct text-to-image attention and enforce the prior).
+- **NodeRAG Priors and Teacher Traces:** The solution distinguishes and synergizes two foundational mechanisms. Cognitive priors (NodeRAG) supply the logical "why" (the abstract semantic links between objects) necessary for genuine associative grounding. Conversely, Teacher Reasoning Traces (from the offline 32B model) supply the mathematical "how" (high-fidelity attention trajectories and semantic vectors) to establish critical distributional alignment between the teacher and student during the initial SFT cold-start phase.
+
+### Workflow Stages
+- **Stage 0 — Offline Preprocessing & Target Synthesis:** Executing the unquantized 32B Teacher Model and Grounding DINO to extract high-fidelity semantic targets and attention trajectories, while engineering distractors via NodeRAG, saving them securely offline to prevent Out Of Memory (OOM) crashes.
+- **Stage 1 — Supervised Fine-Tuning (SFT) & Curriculum Sensory Gating:** A cold-start alignment phase injecting LoRA adapters into the Qwen2.5-VL-3B-Instruct student model to establish distributional alignment using the teacher traces, forced through the `<lvr>` tokens via a Tri-Loss objective.
+- **Stage 2 — Active Optimization via VMR-RLVR (GRPO):** Transforming the model into an active agent using Group Relative Policy Optimization (GRPO) paired with a Dense Reward Evaluator to learn via Reasoning by Contrast.
+
+## Theoretical Framework
+- **The Semiotic Triad:** The framework operationalizes Peirce's Semiotic Triad, training the model to gather the Representamen (visual cues), process the Interpretant (the mental link) through latent tokens, and output the Object (the abstract concept).
+- **Representational Flexibility Over Superposition:** Because pre-trained models collapse superposed inputs into shortcut solutions early in the forward pass, the framework relies on the representational flexibility of continuous embeddings to express complex intermediate computations without the discretization bottleneck of English text.
+- **Thinking Before Looking:** Shifting the paradigm from passive consumption of visual noise to generating a cognitive prior through NodeRAG, guiding the model's gaze proactively to avoid shortcut learning.
+
+## Technical Design Specification (Landscape Analysis & Research Proposal)
+- **First-Generation Instruction-Tuned Models (e.g., LLaVA, InstructBLIP):** Utilize simple MLP projectors for visual instruction tuning. *Perception Gap:* They excel at literal perception but exhibit severe literal bias, lacking the internal cognitive mechanics to connect literal signs to abstract objects.
+- **Massive Generalist Proprietary Models (e.g., GPT-4o, Gemini 1.5 Pro):** Rely on immense parameter scale and verbose text-based reasoning. *Perception Gap:* They succumb to the Curse of CoT, leading to Lazy Attention Localization where the model abandons visual evidence midway through a lengthy text sequence.
+- **Modern Open-Weight Reasoning VLMs (e.g., DeepSeek-R1, QwQ):** Utilize Reinforcement Learning with Verifiable Rewards (RLVR) for trial-and-error exploration. *Perception Gap:* When applied to subjective figurative language using sparse outcome rewards, they suffer from reward hacking, guessing the right concept based on language correlation while focusing on background noise.
+- **Theoretical Solution:** Latent Associative Grounding bridges this gap by decoupling reasoning from verbalization. Continuous `<lvr>` tokens maintain maximum reasoning density, while NodeRAG provides the structured logic for subjective metonymic associations.
+
+## Principal Decisions Redirecting the Architecture
+- **Abandoning Text-Based CoT:** Entirely eliminating discrete English reasoning steps due to unavoidable hallucinatory drift and context dilution.
+- **Selecting K=5 Latent Tokens:** Upgrading the bottleneck to exactly K=5 to mathematically align with the maximum of 5 Representamens naturally present in the ViMET dataset.
+- **Rejecting Online 32B Distillation:** Shifting the 32B Teacher Model strictly to the offline zone to adhere to 16GB VRAM limits, ensuring the PagedAdamW8bit optimizer has a sufficient safety buffer.
+- **Retaining NodeRAG over Pure RL:** Concluding that associative grounding requires predefined cognitive logic, meaning NodeRAG must be kept to provide explicit rules bridging literal signs to abstract concepts.
+- **Implementing Unified On-Policy Distillation:** Reusing generated GRPO rollouts to calculate a reverse KL-divergence term, blending sparse RL accuracy rewards with dense teacher guidance.
+
+## Key Concepts Under Study and Required Decisions
+- **Visual-Anchored Reward Shaping:** Calculating the ratio of internal attention assigned to visual tokens versus system tokens via Advantage-Weighted Attention Divergence (AWAD). *Decision:* Determining the exact λ hyperparameters for the dense reward equation through incremental ablation.
+- **Verifiable Multiple-Choice Reformulation (VMR):** Converting subjective generative tasks into objective tasks against Partially Literal Distractors. *Decision:* Designing the exact semantic distance used to generate distractors via ConceptNet to ensure genuine reasoning by contrast.
+- **SFT Trace Filtering:** Removing poorly reasoned traces generated by the 32B teacher before initializing the 3B student. *Decision:* Balancing the computational cost of rigorously filtering teacher traces against the performance penalty of training on partially noisy data.
+
+## Evaluation Metrics and Failure Modes
+- **Visual Focusing Score (S_focus):** A critical process metric quantifying the percentage of internal attention mass that successfully concentrates on verified visual evidence (the Representamens).
+- **Accuracy:** The primary outcome metric measuring the success rate of resolving the correct abstract Object over the distractors in the VMR format.
+- **Failure Mode — The Literal Trap:** The risk of the model exhibiting literal bias, prematurely binding semantic interpretation to a single concrete noun.
+- **Failure Mode — Lazy Attention Localization:** The tendency of models undergoing multimodal cold-start to distribute attention diffusely across system tokens rather than maintaining strong visual grounding.
+- **Failure Mode — NaN Cascades:** Catastrophic training failure caused by gradient interference in quantized precision, mitigated by `torch.bfloat16` and Earth Mover's Distance.
+
+## Aspects Yet to be Finalized
+- **Hyperparameter Optimization for Dense Rewards:** The exact grid search methodology for determining the ideal lambda weights (λ) balancing the rewards (r_accuracy, r_format, r_crop, r_visual) is in validation.
+- **Filtering Methodology for SFT Traces:** The automated logic to purge hallucinated, non-visually grounded CoT traces from the 32B offline teacher requires further empirical testing.
+- **Optimal Distractor Proximity:** The precise algorithmic distance within the NodeRAG heterograph used to generate the "Partially Literal Distractors" must be finalized to ensure they promote deep exploration without breaking verifiable logic.
