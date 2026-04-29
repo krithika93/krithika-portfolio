@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { LivingProfile } from "@/components/living-profile";
+import { PageHead } from "@/components/page-head";
 
 export default function Vision() {
   return (
@@ -9,6 +10,11 @@ export default function Vision() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="container mx-auto px-4 md:px-8 py-16 max-w-4xl"
     >
+      <PageHead
+        title="Vision & Future Work"
+        description="Translating visual metonymy research into developer tooling and EdTech — Latent Associative Grounding applied to UI and workflow analysis."
+        path="/vision"
+      />
       <h1 className="text-4xl md:text-5xl font-bold mb-10" data-testid="text-vision-heading">Vision & Future Work</h1>
       
       <div className="prose prose-lg dark:prose-invert max-w-none">

@@ -1,0 +1,67 @@
+/case-study/visual-metonymy — Visual Metonymy Case Study
+Audience: Apple AI/ML hiring managers, staff engineers, research scientists. Tone: rigorous, hardware-aware, systems-thinking, theory-to-on-device. No fluff, no marketing voice.
+Components to add to the project:
+
+components/Callout.tsx — accepts a variant prop: "apple-angle" | "decision" | "constraint" | "failure". Each variant has its own color scheme: Apple Angle = navy on cream with a small Apple-style chip label "🍎 Apple Angle"; Decision = electric blue accent with chip "◆ Decision"; Constraint = amber with chip "⚠ Constraint"; Failure = red with chip "✕ Failure Mode". Title prop required, body is children. MDX-importable.
+components/DiagramFrame.tsx — wraps an image with a caption row, fullscreen lightbox (use react-medium-image-zoom or shadcn Dialog), and a download link.
+components/MermaidDiagram.tsx — optional, renders mermaid source via mermaid.render() on client. Stub it for now.
+
+Save the rendered architecture diagram I provide as /public/diagrams/vimet-architecture.png. The <DiagramFrame> references it.
+Page structure (5 sections, sticky left TOC):
+1. Executive Summary
+Open with the 21% gap hook (verbatim from /content/case-study.mdx Problem section).
+Immediately follow with:
+<Callout variant="apple-angle" title="Apple Angle — Edge-Deployable from Day One">
+Latent Associative Grounding closes this gap inside a 16GB VRAM envelope, making it
+viable for A-series Neural Engine targets via 4-bit NF4 QLoRA quantization.
+</Callout>
+2. Problem Definition & Landscape Analysis
+Render the Problem section + Landscape table (from existing case-study MDX). Add a Failure callout for "Curse of CoT → context dilution → hallucinatory drift → Lazy Attention Localization".
+3. Proposed Solutions & Theoretical Framework
+Render Core Architectural Pillars + Theoretical Framework sections. Insert this immediately after the K=5 paragraph:
+<Callout variant="decision" title="Decision — The Superposition Correction">
+Because this is a fine-tuned pre-trained model (Qwen2.5-VL-3B-Instruct), the ⟨lvr⟩
+tokens rely on Representational Flexibility to avoid the discretization bottleneck —
+not genuine superposition.
+</Callout>
+Reuse the verbatim case-study line: K=5 continuous ⟨lvr⟩ tokens act as Visual Information Containers.
+4. SFT / RL Workflow Stages
+Render Stage 0 / Stage 1 / Stage 2 in a "What · Why · How" three-column card per stage.
+Stage 0 — append:
+<Callout variant="constraint" title="Constraint — NodeRAG Repositioned, Not Abandoned">
+NodeRAG is moved offline to engineer Partially Literal Distractors for the VMR pool.
+This avoids OOM death spirals during online training while preserving the cognitive
+priors that bridge literal signs to abstract concepts.
+</Callout>
+Stage 1 — append two callouts:
+<Callout variant="decision" title="Decision — EMD over KL Divergence">
+Wasserstein-1 (Earth Mover's Distance) replaces KL Divergence on sparse box targets to
+prevent NaN cascades under quantized precision.
+</Callout>
+
+<Callout variant="constraint" title="LoRA Configuration — The 16GB Goldilocks Rank">
+r=64, α=128 on q/k/v/o + gate/up/down + embed_tokens & lm_head (UNFROZEN, weight-tied).
+Combined with 4-bit NF4 QLoRA + PagedAdamW8bit, this is the rank that fits training
+and inference inside 16GB VRAM.
+</Callout>
+Stage 2 — append:
+<Callout variant="decision" title="Decision — VMR Replaces LLM-as-a-Judge">
+Verifiable Multiple-Choice Reformulation converts subjective generative tasks into
+objective A/B/C/D rewards against Partially Literal Distractors. No subjective judge,
+no reward hacking.
+</Callout>
+Then render the dense reward equation R_total = λ₁ r_accuracy + λ₂ r_format + λ₃ r_crop + λ₄ r_visual using KaTeX, followed by a paragraph explaining how AWAD + Active Visual Perception forces "Reasoning by Contrast" against literal traps (use the "Time" vs "Age" example from the case study).
+5. Full Architectural Diagram
+<DiagramFrame
+  src="/diagrams/vimet-architecture.png"
+  alt="ViMET Offline Preprocessing Zone vs Online Training Zone"
+  caption="Resource Isolation Strategy: Offline Preprocessing Zone (32B Teacher, Grounding DINO, NodeRAG) is fully unloaded before the Online Training Zone (SFT + CSG, then VMR-RLVR with GRPO) consumes the 16GB VRAM envelope."
+/>
+Below the image, add a 2-line legend stating that the cream zone = offline (executed once, before student training) and the green zone = online (Stage 1 + Stage 2 loops).
+Optionally, render the Mermaid version below the image inside a collapsed <details> block titled "View as interactive Mermaid source" — leave the Mermaid code as {TODO: paste Mermaid source} for me to fill in.
+Style rules
+
+Apple-style cream callout backgrounds, not bright flashy colors.
+Each callout has a 4px left border in its variant color.
+Use a small monospaced chip for the variant label.
+All math via KaTeX. All diagrams in the same DiagramFrame wrapper for consistency.

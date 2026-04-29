@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PageHead } from "@/components/page-head";
 
 export default function Builder() {
   return (
@@ -9,6 +10,11 @@ export default function Builder() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="container mx-auto px-4 md:px-8 py-16 max-w-6xl"
     >
+      <PageHead
+        title="Builder's Mindset"
+        description="Constraint-driven engineering: GRPO, LoRA/QLoRA, NodeRAG, 4-bit NF4 quantization, and Apple Neural Engine deployment for edge AI."
+        path="/builder"
+      />
       <h1 className="text-4xl md:text-5xl font-bold mb-12" data-testid="text-builder-heading">Builder's Mindset</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

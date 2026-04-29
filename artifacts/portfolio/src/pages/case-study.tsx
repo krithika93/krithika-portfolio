@@ -3,6 +3,12 @@ import { Timeline } from "@/components/timeline";
 import { CalloutCard } from "@/components/callout-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { PageHead } from "@/components/page-head";
+
+const buildDate = new Date(__BUILD_DATE__).toLocaleDateString("en-US", {
+  month: "long",
+  year: "numeric",
+});
 
 export default function CaseStudy() {
   const githubUrl = import.meta.env.VITE_GITHUB_URL || "#";
@@ -44,6 +50,11 @@ export default function CaseStudy() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="container mx-auto px-4 md:px-8 py-12 max-w-7xl"
     >
+      <PageHead
+        title="Visual Metonymy Case Study"
+        description="How Latent Associative Grounding, VMR, and NodeRAG priors close the 21% gap between human and VLM performance on visual metonymy benchmarks."
+        path="/case-study/visual-metonymy"
+      />
       <div className="flex flex-col lg:flex-row gap-12 relative">
         {/* Sticky TOC */}
         <aside className="hidden lg:block w-64 shrink-0">
@@ -244,7 +255,7 @@ export default function CaseStudy() {
           </section>
 
           <div className="mt-24 border-t pt-8 text-sm text-muted-foreground flex justify-between items-center">
-            <span data-testid="text-casestudy-lastreviewed">Last reviewed: April 2026</span>
+            <span data-testid="text-casestudy-lastreviewed">Last reviewed: {buildDate}</span>
             <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors text-primary" data-testid="link-casestudy-discuss">
               Discuss this on GitHub
             </a>

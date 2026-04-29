@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { PageHead } from "@/components/page-head";
 
 export default function Landing() {
   const githubUrl = import.meta.env.VITE_GITHUB_URL || "#";
@@ -14,6 +15,11 @@ export default function Landing() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="container mx-auto px-4 md:px-8 py-16 md:py-24 max-w-6xl"
     >
+      <PageHead
+        title="Krithika Rajendran"
+        description="AI/ML Researcher and Engineer specializing in hardware-aware multimodal architectures. Bridging the 21% gap between human and VLM associative reasoning."
+        path="/"
+      />
       <section className="mb-24 text-center md:text-left">
         <h1 
           className="text-[clamp(2.5rem,5vw,5rem)] font-bold text-foreground leading-tight tracking-tight mb-6"
