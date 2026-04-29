@@ -26,7 +26,7 @@ Personal research portfolio for Krithika Rajendran. React 19 + Vite 7 SPA.
 
 **Pages:**
 - `/` — Landing: hero, 3 pillar cards (Researcher / Engineer / Builder), 4 focus tags, proof line, 2 CTAs
-- `/case-study/visual-metonymy` — Visual Metonymy case study with sticky 12-item TOC, definition cards, 3-step workflow timeline (hover tooltips), 3-row landscape comparison table, red-tinted failure mode callout cards, Open Question badges, dynamic "Last reviewed" date
+- `/case-study/visual-metonymy` — Visual Metonymy case study with sticky 12-item TOC, definition cards, 3-step workflow timeline (hover tooltips), 3-row landscape comparison table, red-tinted failure mode callout cards, Open Question badges, dynamic "Last reviewed" date from build timestamp
 - `/builder` — Builder's Mindset: 3-column competency grid + callout block quote
 - `/vision` — Vision & Future Work + Living Profile widget (polls `VITE_DEEPTUTOR_URL/living-profile` every 30s; silently hidden if env var missing or endpoint not reachable)
 - `/notes` — Placeholder page
@@ -41,48 +41,57 @@ Personal research portfolio for Krithika Rajendran. React 19 + Vite 7 SPA.
 - `VITE_CONTACT_EMAIL` — Contact email; used in global footer mailto link
 - `VITE_DEEPTUTOR_URL` — DeepTutor service base URL; used by Living Profile widget on /vision
 
-**Complete file inventory:**
+**Complete file inventory (every file created for the portfolio artifact):**
 
 ```
 artifacts/portfolio/
-├── index.html
+├── .replit-artifact/
+│   └── artifact.toml                         # Artifact config (previewPath="/", port=21113)
+├── components.json                           # shadcn/ui config
+├── index.html                                # SPA entry point
 ├── package.json
 ├── tsconfig.json
-├── vite.config.ts                            # Injects __BUILD_DATE__ via define
-├── src/
-│   ├── main.tsx
-│   ├── App.tsx                               # HelmetProvider + WouterRouter + ThemeProvider
-│   ├── index.css                             # CSS variables, theme tokens (navy/blue/off-white)
-│   ├── types/
-│   │   └── globals.d.ts                      # declare const __BUILD_DATE__: string
-│   ├── components/
-│   │   ├── callout-card.tsx                  # Red-tinted failure mode card
-│   │   ├── footer.tsx                        # Global footer with links + build date
-│   │   ├── living-profile.tsx                # Polling widget for DeepTutor data
-│   │   ├── nav.tsx                           # Top navigation bar + dark mode toggle
-│   │   ├── page-head.tsx                     # react-helmet-async per-page SEO wrapper
-│   │   ├── theme-provider.tsx                # Custom ThemeProvider (NOT next-themes)
-│   │   ├── theme-toggle.tsx                  # Light/dark mode toggle button
-│   │   ├── timeline.tsx                      # Horizontal workflow timeline with hover cards
-│   │   └── ui/
-│   │       ├── badge.tsx
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── hover-card.tsx
-│   │       ├── toast.tsx
-│   │       ├── toaster.tsx
-│   │       └── tooltip.tsx
-│   ├── hooks/
-│   │   └── use-toast.ts
-│   ├── lib/
-│   │   └── utils.ts
-│   └── pages/
-│       ├── builder.tsx                       # /builder
-│       ├── case-study.tsx                    # /case-study/visual-metonymy
-│       ├── landing.tsx                       # /
-│       ├── not-found.tsx                     # 404
-│       ├── notes.tsx                         # /notes
-│       └── vision.tsx                        # /vision
+├── vite.config.ts                            # Injects __BUILD_DATE__ via define; PORT+BASE_PATH required
+├── public/
+│   ├── favicon.svg
+│   └── opengraph.jpg                         # Default og:image (1200×630) used by PageHead
+└── src/
+    ├── main.tsx                              # React root mount
+    ├── App.tsx                               # HelmetProvider + ThemeProvider + WouterRouter
+    ├── index.css                             # CSS variables + theme tokens (navy/blue/off-white)
+    ├── types/
+    │   └── globals.d.ts                      # declare const __BUILD_DATE__: string
+    ├── components/
+    │   ├── callout-card.tsx                  # Red-tinted failure mode card
+    │   ├── footer.tsx                        # Global footer with links + "Built {buildDate}"
+    │   ├── living-profile.tsx                # Polling widget for DeepTutor /living-profile JSON
+    │   ├── nav.tsx                           # Top navigation bar
+    │   ├── page-head.tsx                     # react-helmet-async per-page SEO: title, description,
+    │   │                                     #   og:title, og:description, og:url, og:image, canonical,
+    │   │                                     #   twitter:card, twitter:title, twitter:description, twitter:image
+    │   ├── theme-provider.tsx                # Custom ThemeProvider (localStorage + documentElement class)
+    │   ├── theme-toggle.tsx                  # Light/dark mode toggle button
+    │   ├── timeline.tsx                      # Horizontal workflow timeline with HoverCard tooltips
+    │   └── ui/
+    │       ├── badge.tsx
+    │       ├── button.tsx
+    │       ├── card.tsx
+    │       ├── hover-card.tsx
+    │       ├── toast.tsx
+    │       ├── toaster.tsx
+    │       └── tooltip.tsx
+    ├── hooks/
+    │   ├── use-mobile.tsx
+    │   └── use-toast.ts
+    ├── lib/
+    │   └── utils.ts
+    └── pages/
+        ├── builder.tsx                       # /builder
+        ├── case-study.tsx                    # /case-study/visual-metonymy
+        ├── landing.tsx                       # /
+        ├── not-found.tsx                     # 404 fallback
+        ├── notes.tsx                         # /notes  {TODO: needs source}
+        └── vision.tsx                        # /vision
 ```
 
 **Key dependencies:**

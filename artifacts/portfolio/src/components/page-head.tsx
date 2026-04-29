@@ -8,7 +8,7 @@ interface PageHeadProps {
 
 const SITE_NAME = "Krithika Rajendran";
 const BASE_URL = "https://krithikarajendran.replit.app";
-const DEFAULT_OG_IMAGE = `${BASE_URL}/og-default.png`;
+const DEFAULT_OG_IMAGE = `${BASE_URL}/opengraph.jpg`;
 
 export function PageHead({ title, description, path = "" }: PageHeadProps) {
   const fullTitle = title === SITE_NAME ? title : `${title} — ${SITE_NAME}`;
