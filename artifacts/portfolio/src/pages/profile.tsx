@@ -110,6 +110,14 @@ export default function Profile() {
             knowing that whatever name this had, I wanted to spend the next phase of my
             life on it.
           </p>
+          <blockquote
+            className="not-prose my-8 border-l-4 border-l-[#3D7BFF] dark:border-l-blue-300 bg-[#3D7BFF]/5 dark:bg-[#3D7BFF]/10 px-6 py-4 rounded-r-md md:clear-right"
+            data-testid="pullquote-bird-was-sign"
+          >
+            <p className="text-xl md:text-2xl italic font-medium leading-snug text-[#1E3FA0] dark:text-blue-100">
+              "The bird was the sign. The meaning was somewhere else entirely."
+            </p>
+          </blockquote>
           <p>
             That's the gap the field calls the Perception Gap, and it's the one current
             Vision-Language Models hit a wall against. They can name the bird in my photo
@@ -126,6 +134,15 @@ export default function Profile() {
             is the direction small, on-device models will move next, and ViMET is my
             first attempt to argue precisely how.
           </p>
+          <blockquote
+            className="not-prose my-8 border-l-4 border-l-[#3D7BFF] dark:border-l-blue-300 bg-[#3D7BFF]/5 dark:bg-[#3D7BFF]/10 px-6 py-4 rounded-r-md md:clear-right"
+            data-testid="pullquote-latent-reasoning-bet"
+          >
+            <p className="text-xl md:text-2xl italic font-medium leading-snug text-[#1E3FA0] dark:text-blue-100">
+              "I'm betting that latent reasoning is the direction small, on-device
+              models will move next."
+            </p>
+          </blockquote>
           <p>
             I wrote the case study end-to-end alone, working in a "perpetual beta"
             mindset — read, argue, refine, repeat — under a constraint I treated as the
@@ -142,6 +159,15 @@ export default function Profile() {
             breakthroughs; ViMET is what happens when that temperament meets a problem
             worth a year of careful argument.
           </p>
+          <blockquote
+            className="not-prose my-8 border-l-4 border-l-[#3D7BFF] dark:border-l-blue-300 bg-[#3D7BFF]/5 dark:bg-[#3D7BFF]/10 px-6 py-4 rounded-r-md md:clear-right"
+            data-testid="pullquote-not-a-flex"
+          >
+            <p className="text-xl md:text-2xl italic font-medium leading-snug text-[#1E3FA0] dark:text-blue-100">
+              "That number is not a flex. A year ago I couldn't afford a 16GB
+              laptop."
+            </p>
+          </blockquote>
           <p>
             I should say one more thing, because it's the truest part. On the morning of
             June 19, I had been chanting for about five hours. I wasn't planning to walk
