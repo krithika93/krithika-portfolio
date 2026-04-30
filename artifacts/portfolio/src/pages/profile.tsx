@@ -83,34 +83,40 @@ export default function Profile() {
             looking at a bird. I was looking at three small, literal cues that had somehow
             added up, in my head, to grace. The bird was the sign. The meaning was
             somewhere else entirely. I walked the rest of the way to the library already
-            knowing that whatever name this had, I was going to spend the next year of my
-            life building a model that could do it.
+            knowing that whatever name this had, I wanted to spend the next phase of my
+            life on it.
           </p>
           <p>
             That's the gap the field calls the Perception Gap, and it's the one current
             Vision-Language Models hit a wall against. They can name the bird in my photo
             without flinching. They cannot make the leap from those specific feathers in
             that specific light to an abstract concept the pixels never contained. I
-            started calling that wall the Literal Wall, and the architecture that became
-            ViMET — Latent Associative Grounding, the K=5 ⟨lvr⟩ tokens, Verifiable
-            Multiple-Choice Reformulation against Partially Literal Distractors — is,
-            underneath all of it, one long attempt to teach a small model to make the
-            leap I made on the way to the library.
+            started calling that wall the Literal Wall. In December 2025 I stumbled on
+            the Visual Metonymy literature while reading the work of professors I wanted
+            to study under, and the field gave me a name for what I'd already been
+            turning over for six months. From there I spent the early months of 2026
+            reading roughly ten papers in latent reasoning and adjacent VLM work —
+            Qwen2.5-VL, NodeRAG, GRPO, NF4 QLoRA, Grounding DINO, and the emerging
+            continuous-token-reasoning literature — and writing the architectural
+            argument that became the ViMET case study. I'm betting that latent reasoning
+            is the direction small, on-device models will move next, and ViMET is my
+            first attempt to argue precisely how.
           </p>
           <p>
-            I built it single-handedly, in a "perpetual beta" mindset — ship, measure,
-            refine, repeat — under a constraint I refused to relax: a single 16GB VRAM
-            envelope. That number is not a flex. A year ago I couldn't afford a 16GB
-            laptop. The constraint is the machine I now own, and the discipline of
-            fitting an entire research pipeline inside it is partly engineering and
-            partly a way of keeping faith with where I came from. The grind pushed me
-            well past my comfort zones — OOM cascades, NaN explosions on sparse box
-            targets, the curse of CoT diluting attention into hallucinatory drift — but
-            the constraint was the gift. Every obstacle forced an architectural decision
-            instead of a workaround, and those decisions are what the case study
-            documents. I am, by temperament, a continuous learner who cares about
-            incremental consistency more than about breakthroughs; ViMET is what happens
-            when that temperament meets a problem worth twelve months of patience.
+            I wrote the case study end-to-end alone, working in a "perpetual beta"
+            mindset — read, argue, refine, repeat — under a constraint I treated as the
+            design spec from day one: a single 16GB VRAM envelope. That number is not a
+            flex. A year ago I couldn't afford a 16GB laptop. The constraint is the
+            machine I now own, and designing the entire architecture to fit inside it is
+            partly engineering and partly a way of keeping faith with where I came from.
+            The empirical work so far is a teacher-student distillation inference probe
+            I ran on a 2,000-image dataset in a Kaggle notebook — a first concrete look
+            at whether the architectural intuitions hold under real images. The training
+            pipeline itself is not yet implemented; that's the next phase, and it's the
+            work I'm openly looking for collaborators on. I am, by temperament, a
+            continuous learner who cares about incremental consistency more than about
+            breakthroughs; ViMET is what happens when that temperament meets a problem
+            worth a year of careful argument.
           </p>
           <p>
             I should say one more thing, because it's the truest part. On the morning of
@@ -123,13 +129,12 @@ export default function Profile() {
             research is the same discipline I bring to my practice: chant, listen for
             Paramatma, work in detachment, and stop performing for an audience that
             isn't the one you're actually accountable to. The Cardinal walk was
-            Paramatma's instruction. The twelve months after it were the response. ViMET
-            is my comeback — a launchpad, not a destination — and I care less about the
-            result than about the legacy of the contribution and the personal
-            fulfillment of working on a problem that actually interests me. My next
-            chapter is to bring that same constraint-driven, lived-in rigor to a place
-            that builds interpretive systems on real hardware. Apple is the room I have
-            in mind.
+            Paramatma's instruction. The months after it were the response. ViMET is my
+            comeback — a launchpad, not a destination — and I care less about the result
+            than about the legacy of the contribution and the personal fulfillment of
+            working on a problem that actually interests me. My next chapter is to bring
+            that same constraint-driven, lived-in rigor to a place that builds
+            interpretive systems on real hardware. Apple is the room I have in mind.
           </p>
         </div>
       </section>
