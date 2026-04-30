@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { LivingProfile } from "@/components/living-profile";
 import { PageHead } from "@/components/page-head";
+import cardinalWalkImage from "@assets/3c6ba7fc-9566-49c4-ad66-897d4c970bc0_1777568745429.JPG";
 
 export default function Profile() {
   return (
@@ -58,6 +59,22 @@ export default function Profile() {
           className="prose prose-lg dark:prose-invert max-w-3xl text-muted-foreground leading-relaxed"
           data-testid="text-about-body"
         >
+          <figure
+            className="mb-6 md:float-right md:ml-8 md:mb-4 md:w-64 md:mt-1 not-prose"
+            data-testid="figure-cardinal-walk"
+          >
+            <img
+              src={cardinalWalkImage}
+              alt="A female Northern Cardinal among pink blossoms — the photograph from the June 19, 2025 walk to the library that became the seed of ViMET."
+              className="w-full h-auto rounded-lg shadow-md ring-1 ring-border"
+              loading="lazy"
+              data-testid="img-cardinal-walk"
+            />
+            <figcaption className="mt-2 text-sm italic text-muted-foreground leading-snug">
+              The Cardinal walk — June 19, 2025. Three small literal cues that
+              somehow added up to grace.
+            </figcaption>
+          </figure>
           <p>
             ViMET didn't start in a whitepaper. It started on June 19, 2025, on a walk to
             the library, when I spent several minutes tracking a female Northern Cardinal —
