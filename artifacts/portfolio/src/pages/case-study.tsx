@@ -331,7 +331,7 @@ export default function CaseStudy() {
               <h3 className="text-lg font-semibold mb-2">Dense Reward Equation</h3>
               <Math
                 display
-                tex="R_{\\text{total}} \\;=\\; \\lambda_1\\, r_{\\text{accuracy}} \\;+\\; \\lambda_2\\, r_{\\text{format}} \\;+\\; \\lambda_3\\, r_{\\text{crop}} \\;+\\; \\lambda_4\\, r_{\\text{visual}}"
+                tex="R_{\\text{total}} = \\lambda_1\\, r_{\\text{accuracy}} + \\lambda_2\\, r_{\\text{format}} + \\lambda_3\\, r_{\\text{crop}} + \\lambda_4\\, r_{\\text{visual}}"
               />
               <p className="text-sm leading-relaxed text-muted-foreground mt-3">
                 Together, Advantage-Weighted Attention Divergence (AWAD) and Active Visual Perception force the model to practice <em>Reasoning by Contrast</em> against literal traps. Take the canonical Time vs. Age example: when an image of a wristwatch evokes both <em>Time</em> (the literal Representamen) and <em>Age</em> (the abstract metonym), the dense reward penalizes attention that lingers on the watch face and reinforces trajectories that traverse the NodeRAG semantic chain — wristwatch → wear → maturity → <em>Age</em>.
