@@ -1,0 +1,93 @@
+2. /case-study/visual-metonymy — Visual Metonymy Case Study
+
+Audience: Apple AI/ML hiring managers, staff engineers, research scientists.
+Tone: rigorous, hardware-aware, systems-thinking, theory-to-on-device.
+No fluff, no marketing voice.
+
+──────────────────────────────────────────────────────────────
+ASSET HANDLING (architectural diagram)
+──────────────────────────────────────────────────────────────
+I am providing one architectural diagram as a PNG file:
+  • Filename:  vimet-architecture.png
+  • Format:    PNG, transparent or cream background
+  • Final path: /public/diagrams/vimet-architecture.png
+  • Public URL when served: /diagrams/vimet-architecture.png
+
+Steps the agent must perform:
+1. Create the directory /public/diagrams/ if it does not exist.
+2. Place the uploaded PNG at /public/diagrams/vimet-architecture.png
+   (do NOT rename it, do NOT re-encode it, do NOT compress it).
+3. Also copy it to /public/diagrams/vimet-architecture@2x.png ONLY if I
+   provide a 2x version; otherwise skip.
+4. The <DiagramFrame> component in Section 5 of this page MUST reference
+   it via the public URL "/diagrams/vimet-architecture.png".
+5. If the file is missing at build time, render a dashed placeholder box
+   (same aspect ratio as 16:10) with the text:
+   "⏳ vimet-architecture.png not yet uploaded — drop into /public/diagrams/"
+   Do NOT throw a build error.
+6. Add the file to .gitignore EXCEPTIONS so it is committed
+   (i.e. it must be tracked in git, not ignored).
+7. In next.config.js, ensure images.unoptimized = false and that PNGs
+   under /public/diagrams/ are served with Cache-Control: public,
+   max-age=31536000, immutable.
+
+──────────────────────────────────────────────────────────────
+
+Components to add to the project:
+
+components/Callout.tsx — accepts a variant prop:
+  "apple-angle" | "decision" | "constraint" | "failure"
+  Apple Angle = navy on cream, chip "🍎 Apple Angle"
+  Decision    = electric blue accent, chip "◆ Decision"
+  Constraint  = amber, chip "⚠ Constraint"
+  Failure     = red, chip "✕ Failure Mode"
+  Title prop required; body is children. MDX-importable.
+
+components/DiagramFrame.tsx — wraps an image with:
+  • caption row beneath the image
+  • fullscreen lightbox (use react-medium-image-zoom OR shadcn Dialog)
+  • a "Download PNG" link that points to the same src
+  • lazy-loading via next/image where possible
+  • alt text is REQUIRED (TS prop, not optional)
+
+components/MermaidDiagram.tsx — optional, renders mermaid source via
+mermaid.render() on client. Stub it for now (return null + TODO comment).
+
+Page structure (5 sections, sticky left TOC):
+
+1. Executive Summary
+   [...unchanged from original prompt...]
+
+2. Problem Definition & Landscape Analysis
+   [...unchanged...]
+
+3. Proposed Solutions & Theoretical Framework
+   [...unchanged...]
+
+4. SFT / RL Workflow Stages
+   [...unchanged...]
+
+5. Full Architectural Diagram
+
+   <DiagramFrame
+     src="/diagrams/vimet-architecture.png"
+     alt="ViMET Offline Preprocessing Zone vs Online Training Zone"
+     caption="Resource Isolation Strategy: Offline Preprocessing Zone
+              (32B Teacher, Grounding DINO, NodeRAG) is fully unloaded
+              before the Online Training Zone (SFT + CSG, then VMR-RLVR
+              with GRPO) consumes the 16GB VRAM envelope."
+     downloadable
+   />
+
+   Below the image, add a 2-line legend:
+     Line 1 — "Cream zone = Offline Preprocessing (executed once, before student training)."
+     Line 2 — "Green zone = Online Training (Stage 1 SFT+CSG and Stage 2 VMR-RLVR loops)."
+
+   Then a collapsed <details> block titled
+   "View as interactive Mermaid source" containing:
+   {TODO: paste Mermaid source}
+
+(Defer all visual styling — colors, spacing, typography, chip design,
+border radii, shadow values — to the separate STYLING PROMPT that I
+will send as a follow-up message. For now, use sensible Tailwind
+defaults so the page is structurally correct and renders without errors.)
