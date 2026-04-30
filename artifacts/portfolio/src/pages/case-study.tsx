@@ -171,6 +171,25 @@ export default function CaseStudy() {
           {/* SECTION 1 — Executive Summary */}
           <section id="executive-summary" className="scroll-mt-24 mb-16">
             <h2 className="text-3xl mb-6">1. Executive Summary</h2>
+            <aside
+              className="not-prose mb-6 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/50 px-5 py-4 text-sm md:text-base leading-relaxed"
+              data-testid="case-study-attribution"
+            >
+              <p className="m-0 text-slate-700 dark:text-slate-300">
+                <span className="font-semibold text-slate-900 dark:text-slate-100">Built on:</span>{" "}
+                the ViMET dataset and the figurative-reasoning framework from Ghosh, Jiang &amp; Liu,{" "}
+                <a
+                  href="https://github.com/cincynlp/ViMET"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#3D7BFF] dark:text-blue-300 underline underline-offset-2 hover:text-[#1E3FA0] dark:hover:text-blue-100"
+                  data-testid="link-vimet-attribution"
+                >
+                  "A Computational Approach to Visual Metonymy," EACL 2026 (cincynlp/ViMET)
+                </a>
+                .
+              </p>
+            </aside>
             <p className="text-lg leading-relaxed">
               <strong>The Associative Reasoning Deficit:</strong> Vision-Language Models (VLMs) currently suffer from a massive 21% performance gap compared to human baselines (86.9% human vs. 65.9% VLM) when attempting to resolve Visual Metonymy.
             </p>
