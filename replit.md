@@ -28,7 +28,7 @@ Personal research portfolio for Krithika Rajendran. React 19 + Vite 7 SPA.
 - `/` — Landing: hero, 3 pillar cards (Researcher / Engineer / Builder), 4 focus tags, proof line, 2 CTAs
 - `/case-study/visual-metonymy` — Visual Metonymy case study restructured into 5 top-level sections with nested sticky TOC: (1) Executive Summary + Apple Angle callout, (2) Problem Definition & Landscape Analysis (problem cards + Failure callout + Definitions + Landscape comparison table), (3) Proposed Solutions & Theoretical Framework (Core Pillars + Decision callout + Key Concepts Integrated + Theoretical Framework), (4) SFT/RL Workflow Stages (Stage 0/1/2 What·Why·How cards + 4 Decision/Constraint callouts + KaTeX dense reward equation + AWAD/Time-vs-Age paragraph + Principal Decisions + Key Concepts Under Study), (5) Architectural Diagram & Evaluation (DiagramFrame with fullscreen lightbox + cream/green legend + collapsed Mermaid `<details>` block + Evaluation Metrics with 3 Failure callouts + Aspects Yet to be Finalized). Dynamic "Last reviewed" date from build timestamp.
 - `/builder` — Builder's Mindset: 3-column competency grid + callout block quote
-- `/vision` — Vision & Future Work + Living Profile widget (polls `VITE_LIVING_PROFILE_URL` every 30s; silently hidden if env var missing or endpoint not reachable)
+- `/vision` — Vision & Future Work + Living Profile widget (fetches `VITE_LIVING_PROFILE_URL` on mount; manual Refresh button; falls back to hardcoded `https://living.rkrithika.me/living-profile` if env var unset; shows loading state, error state, summary as markdown, and a collapsible `<details>` "Full profile" section)
 - `/notes` — Placeholder page
 
 **`{TODO}` markers (exact locations):**
@@ -39,7 +39,7 @@ Personal research portfolio for Krithika Rajendran. React 19 + Vite 7 SPA.
 - `VITE_GITHUB_URL` — GitHub profile URL; used in Landing CTA button and Case Study footer link
 - `VITE_LINKEDIN_URL` — LinkedIn profile URL; used in global footer
 - `VITE_CONTACT_EMAIL` — Contact email; used in global footer mailto link
-- `VITE_LIVING_PROFILE_URL` — Full URL to the Living Profile JSON endpoint (e.g. `https://living.rkrithika.me/living-profile`); polled every 30s by the Living Profile widget on /vision. Widget is silently hidden when this var is unset or the endpoint is unreachable.
+- `VITE_LIVING_PROFILE_URL` — Full URL to the Living Profile JSON endpoint (e.g. `https://living.rkrithika.me/living-profile`); fetched on mount + on user-clicked Refresh by the Living Profile widget on /vision. If unset, the widget falls back to a hardcoded `https://living.rkrithika.me/living-profile`. Endpoint failures show an inline error message instead of hiding the widget.
 - `VITE_DEEPTUTOR_URL` — **Deprecated.** Replaced by `VITE_LIVING_PROFILE_URL`. No code references this anymore; safe to remove from the Secrets UI.
 - `VITE_SITE_URL` — (optional) Production base URL used for canonical links and og:url/og:image in PageHead; defaults to `https://krithikarajendran.replit.app`
 
@@ -70,7 +70,7 @@ artifacts/portfolio/
     │   ├── callout-card.tsx                  # Legacy red-tinted failure mode card (kept for compatibility; case-study now uses callout.tsx with variant="failure")
     │   ├── diagram-frame.tsx                 # Wraps a diagram image with caption, fullscreen lightbox (radix Dialog), and Download PNG link; alt+caption required
     │   ├── footer.tsx                        # Global footer with links + "Built {buildDate}"
-    │   ├── living-profile.tsx                # Polling widget for DeepTutor /living-profile JSON
+    │   ├── living-profile.tsx                # Living Profile widget: loading/error/refresh + summary + collapsible Full profile
     │   ├── math.tsx                          # KaTeX renderer (strict:true — full LaTeX faithfulness mode); used for the dense reward equation in case-study Section 4. throwOnError:false renders inline error nodes instead of crashing if invalid TeX is ever introduced.
     │   ├── mermaid-diagram.tsx               # Stub component (returns null); placeholder for future client-side mermaid.render() integration
     │   ├── nav.tsx                           # Top navigation bar

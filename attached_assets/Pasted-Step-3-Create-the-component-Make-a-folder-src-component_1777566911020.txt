@@ -1,0 +1,101 @@
+Step 3 — Create the component
+
+Make a folder src/components/ if it doesn't exist.
+Create src/components/LivingProfile.jsx with this content:
+
+jsximport { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+
+const URL =
+  import.meta.env.VITE_LIVING_PROFILE_URL ||
+  "https://living.rkrithika.me/living-profile";
+
+export default function LivingProfile() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const load = () => {
+    setLoading(true);
+    setError(null);
+    fetch(URL)
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((d) => {
+        setData(d);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setError(e.message);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  if (loading) return <p>Loading living profile…</p>;
+  if (error)   return <p>Couldn't load profile: {error}</p>;
+  if (!data)   return null;
+
+  const updated = data.updated_at
+    ? new Date(data.updated_at * 1000).toLocaleString()
+    : "never";
+
+  return (
+    <section className="living-profile">
+      <header
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "0.75rem",
+          flexWrap: "wrap",
+        }}
+      >
+        <h2 style={{ margin: 0 }}>Living Profile</h2>
+        <button onClick={load} aria-label="Refresh">
+          ↻ Refresh
+        </button>
+        <small style={{ opacity: 0.7 }}>Updated {updated}</small>
+      </header>
+
+      {data.summary ? (
+        <ReactMarkdown>{data.summary}</ReactMarkdown>
+      ) : (
+        <p>
+          <em>No summary yet — keep chatting with DeepTutor.</em>
+        </p>
+      )}
+
+      {data.profile && (
+        <details style={{ marginTop: "1rem" }}>
+          <summary style={{ cursor: "pointer" }}>Full profile</summary>
+          <ReactMarkdown>{data.profile}</ReactMarkdown>
+        </details>
+      )}
+    </section>
+  );
+}
+Step 4 — Use it in your portfolio
+
+Open your main page component (most likely src/App.jsx in a Vite + React template).
+Add the import at the top:
+
+jsx  import LivingProfile from "./components/LivingProfile";
+
+Place <LivingProfile /> wherever you want the section to appear:
+
+jsx  function App() {
+    return (
+      <main>
+        <h1>Hi, I'm Krithika</h1>
+        <p>… your existing portfolio content …</p>
+
+        <LivingProfile />
+      </main>
+    );
+  }
+  export default App;
