@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, Copy, Mail } from "lucide-react";
+import { Check, Copy, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -94,15 +94,16 @@ export function Footer() {
               </Tooltip>
             </div>
           )}
-          <div className="flex space-x-6">
+          <div className="flex items-center gap-3">
             {github && (
               <a
                 href={github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border bg-muted/30 px-3 py-1 text-foreground/90 hover:text-foreground hover:bg-muted/60 transition-colors font-medium"
                 data-testid="link-footer-github"
               >
+                <Github className="h-3.5 w-3.5 text-muted-foreground/80" aria-hidden="true" />
                 GitHub
               </a>
             )}
@@ -111,9 +112,10 @@ export function Footer() {
                 href={linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors"
+                className="inline-flex items-center gap-2 rounded-full border bg-muted/30 px-3 py-1 text-foreground/90 hover:text-foreground hover:bg-muted/60 transition-colors font-medium"
                 data-testid="link-footer-linkedin"
               >
+                <Linkedin className="h-3.5 w-3.5 text-muted-foreground/80" aria-hidden="true" />
                 LinkedIn
               </a>
             )}
