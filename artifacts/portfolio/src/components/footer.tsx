@@ -1,3 +1,13 @@
+import { useState } from "react";
+import { Check, Copy, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useToast } from "@/hooks/use-toast";
+
 const buildDate = new Date(__BUILD_DATE__).toLocaleDateString("en-US", {
   month: "short",
   year: "numeric",
@@ -8,47 +18,106 @@ export function Footer() {
   const github = import.meta.env.VITE_GITHUB_URL;
   const linkedin = import.meta.env.VITE_LINKEDIN_URL;
   const currentYear = new Date(__BUILD_DATE__).getFullYear();
+  const { toast } = useToast();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    if (!email) return;
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      toast({
+        title: "Email copied",
+        description: `${email} is on your clipboard.`,
+      });
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      toast({
+        title: "Couldn't copy",
+        description: "Try selecting the address manually.",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <footer className="w-full border-t py-8 mt-16 bg-background">
-      <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
-        <div className="mb-4 md:mb-0 flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3" data-testid="text-footer-copyright">
+      <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-muted-foreground">
+        <div
+          className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3"
+          data-testid="text-footer-copyright"
+        >
           <span>© {currentYear} Krithika Rajendran</span>
           <span className="hidden sm:inline text-muted-foreground/40">·</span>
-          <span className="text-muted-foreground/60 text-xs" data-testid="text-footer-builddate">Built {buildDate}</span>
+          <span
+            className="text-muted-foreground/60 text-xs"
+            data-testid="text-footer-builddate"
+          >
+            Built {buildDate}
+          </span>
         </div>
-        <div className="flex space-x-6">
+        <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
           {email && (
-            <a 
-              href={`mailto:${email}`} 
-              className="hover:text-foreground transition-colors"
-              data-testid="link-footer-email"
+            <div
+              className="inline-flex items-center gap-1 rounded-full border bg-muted/30 pl-3 pr-1 py-1"
+              data-testid="group-footer-email"
             >
-              Contact
-            </a>
+              <Mail className="h-3.5 w-3.5 text-muted-foreground/80" aria-hidden="true" />
+              <a
+                href={`mailto:${email}`}
+                className="text-foreground/90 hover:text-foreground transition-colors font-medium"
+                data-testid="link-footer-email"
+              >
+                {email}
+              </a>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    onClick={handleCopy}
+                    aria-label={copied ? "Email copied" : "Copy email address"}
+                    className="h-7 w-7 rounded-full text-muted-foreground hover:text-foreground"
+                    data-testid="button-footer-copy-email"
+                  >
+                    {copied ? (
+                      <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                    ) : (
+                      <Copy className="h-3.5 w-3.5" aria-hidden="true" />
+                    )}
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="top">
+                  {copied ? "Copied!" : "Copy email"}
+                </TooltipContent>
+              </Tooltip>
+            </div>
           )}
-          {github && (
-            <a 
-              href={github} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-foreground transition-colors"
-              data-testid="link-footer-github"
-            >
-              GitHub
-            </a>
-          )}
-          {linkedin && (
-            <a 
-              href={linkedin} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="hover:text-foreground transition-colors"
-              data-testid="link-footer-linkedin"
-            >
-              LinkedIn
-            </a>
-          )}
+          <div className="flex space-x-6">
+            {github && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors"
+                data-testid="link-footer-github"
+              >
+                GitHub
+              </a>
+            )}
+            {linkedin && (
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors"
+                data-testid="link-footer-linkedin"
+              >
+                LinkedIn
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </footer>
