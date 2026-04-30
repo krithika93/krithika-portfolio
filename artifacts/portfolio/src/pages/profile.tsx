@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { LivingProfile } from "@/components/living-profile";
 import { PageHead } from "@/components/page-head";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -97,6 +98,8 @@ export default function Profile() {
           </Card>
         ))}
       </div>
+
+      <LivingProfile />
     </motion.div>
   );
 }

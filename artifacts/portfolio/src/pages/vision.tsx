@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { LivingProfile } from "@/components/living-profile";
 import { PageHead } from "@/components/page-head";
 
 export default function Vision() {
@@ -26,8 +25,6 @@ export default function Vision() {
           My long-term research trajectory applies Latent Associative Grounding to UI and workflow analysis. By classifying screenshots, stack-traces, and CLI animations as Representamens of abstract concepts, I aim to generate 'visual metonymical charts' — accelerating the theory-to-implementation gap for engineers and helping them master complex frameworks instantly without the cognitive overload of text-heavy tutorials.
         </p>
       </div>
-
-      <LivingProfile />
     </motion.div>
   );
 }
