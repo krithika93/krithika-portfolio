@@ -28,7 +28,7 @@ Personal research portfolio for Krithika Rajendran. React 19 + Vite 7 SPA.
 - `/` — Landing: hero, 3 pillar cards (Researcher / Engineer / Builder), 4 focus tags, proof line, 2 CTAs
 - `/case-study/visual-metonymy` — Visual Metonymy case study restructured into 5 top-level sections with nested sticky TOC: (1) Executive Summary + Apple Angle callout, (2) Problem Definition & Landscape Analysis (problem cards + Failure callout + Definitions + Landscape comparison table), (3) Proposed Solutions & Theoretical Framework (Core Pillars + Decision callout + Key Concepts Integrated + Theoretical Framework), (4) SFT/RL Workflow Stages (Stage 0/1/2 What·Why·How cards + 4 Decision/Constraint callouts + KaTeX dense reward equation + AWAD/Time-vs-Age paragraph + Principal Decisions + Key Concepts Under Study), (5) Architectural Diagram & Evaluation (DiagramFrame with fullscreen lightbox + cream/green legend + collapsed Mermaid `<details>` block + Evaluation Metrics with 3 Failure callouts + Aspects Yet to be Finalized). Dynamic "Last reviewed" date from build timestamp.
 - `/builder` — Builder's Mindset: 3-column competency grid + callout block quote
-- `/vision` — Vision & Future Work + Living Profile widget (polls `VITE_DEEPTUTOR_URL/living-profile` every 30s; silently hidden if env var missing or endpoint not reachable)
+- `/vision` — Vision & Future Work + Living Profile widget (polls `VITE_LIVING_PROFILE_URL` every 30s; silently hidden if env var missing or endpoint not reachable)
 - `/notes` — Placeholder page
 
 **`{TODO}` markers (exact locations):**
@@ -39,7 +39,8 @@ Personal research portfolio for Krithika Rajendran. React 19 + Vite 7 SPA.
 - `VITE_GITHUB_URL` — GitHub profile URL; used in Landing CTA button and Case Study footer link
 - `VITE_LINKEDIN_URL` — LinkedIn profile URL; used in global footer
 - `VITE_CONTACT_EMAIL` — Contact email; used in global footer mailto link
-- `VITE_DEEPTUTOR_URL` — (local development only) DeepTutor service base URL; used by Living Profile widget on /vision. Run DeepTutor locally and set this in a local `.env` file. Widget is silently hidden when this var is unset.
+- `VITE_LIVING_PROFILE_URL` — Full URL to the Living Profile JSON endpoint (e.g. `https://living.rkrithika.me/living-profile`); polled every 30s by the Living Profile widget on /vision. Widget is silently hidden when this var is unset or the endpoint is unreachable.
+- `VITE_DEEPTUTOR_URL` — **Deprecated.** Replaced by `VITE_LIVING_PROFILE_URL`. No code references this anymore; safe to remove from the Secrets UI.
 - `VITE_SITE_URL` — (optional) Production base URL used for canonical links and og:url/og:image in PageHead; defaults to `https://krithikarajendran.replit.app`
 
 **Complete file inventory (every file created for the portfolio artifact):**
