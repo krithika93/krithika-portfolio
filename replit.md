@@ -29,11 +29,9 @@ Personal research portfolio for Krithika Rajendran. React 19 + Vite 7 SPA.
 - `/case-study/visual-metonymy` — Visual Metonymy case study restructured into 5 top-level sections with nested sticky TOC: (1) Executive Summary + Apple Angle callout, (2) Problem Definition & Landscape Analysis (problem cards + Failure callout + Definitions + Landscape comparison table), (3) Proposed Solutions & Theoretical Framework (Core Pillars + Decision callout + Key Concepts Integrated + Theoretical Framework), (4) SFT/RL Workflow Stages (Stage 0/1/2 What·Why·How cards + 4 Decision/Constraint callouts + KaTeX dense reward equation + AWAD/Time-vs-Age paragraph + Principal Decisions + Key Concepts Under Study), (5) Architectural Diagram & Evaluation (DiagramFrame with fullscreen lightbox + cream/green legend + collapsed Mermaid `<details>` block + Evaluation Metrics with 3 Failure callouts + Aspects Yet to be Finalized). Dynamic "Last reviewed" date from build timestamp.
 - `/builder` — Builder's Mindset: 3-column competency grid + callout block quote
 - `/vision` — Vision & Future Work + Living Profile widget (fetches `VITE_LIVING_PROFILE_URL` on mount; manual Refresh button; falls back to hardcoded `https://living.rkrithika.me/living-profile` if env var unset; shows loading state, error state, summary as markdown, and a collapsible `<details>` "Full profile" section)
-- `/notes` — Placeholder page
 
 **`{TODO}` markers (exact locations):**
-1. `artifacts/portfolio/src/pages/notes.tsx` line 19 — `{TODO: needs source}` (no notes content was supplied)
-2. `artifacts/portfolio/src/pages/case-study.tsx` Section 5 collapsed `<details>` block — `{TODO: paste Mermaid source}` (interactive Mermaid version of the architecture diagram)
+1. `artifacts/portfolio/src/pages/case-study.tsx` Section 5 collapsed `<details>` block — `{TODO: paste Mermaid source}` (interactive Mermaid version of the architecture diagram)
 
 **Environment variables (all optional — components gracefully hide when missing):**
 - `VITE_GITHUB_URL` — GitHub profile URL; used in Landing CTA button and Case Study footer link
@@ -98,7 +96,6 @@ artifacts/portfolio/
         ├── case-study.tsx                    # /case-study/visual-metonymy
         ├── landing.tsx                       # /
         ├── not-found.tsx                     # 404 fallback
-        ├── notes.tsx                         # /notes  {TODO: needs source}
         └── vision.tsx                        # /vision
 ```
 

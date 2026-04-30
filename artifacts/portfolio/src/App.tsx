@@ -10,7 +10,6 @@ import Landing from "@/pages/landing";
 import CaseStudy from "@/pages/case-study";
 import Builder from "@/pages/builder";
 import Vision from "@/pages/vision";
-import Notes from "@/pages/notes";
 
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
@@ -27,7 +26,6 @@ function Router() {
           <Route path="/case-study/visual-metonymy" component={CaseStudy} />
           <Route path="/builder" component={Builder} />
           <Route path="/vision" component={Vision} />
-          <Route path="/notes" component={Notes} />
           <Route component={NotFound} />
         </Switch>
       </main>
