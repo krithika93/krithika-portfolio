@@ -9,6 +9,7 @@ export function Nav() {
     { href: "/case-study/visual-metonymy", label: "Case Study" },
     { href: "/builder", label: "Builder" },
     { href: "/vision", label: "Vision" },
+    { href: "/profile", label: "Profile" },
   ];
 
   return (
