@@ -17,11 +17,19 @@ export default function Profile() {
       />
 
       <h1
-        className="text-4xl md:text-5xl font-bold mb-10"
+        className="text-4xl md:text-5xl font-bold mb-4"
         data-testid="text-profile-heading"
       >
         Profile
       </h1>
+
+      <p
+        className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10 max-w-3xl"
+        data-testid="text-profile-tagline"
+      >
+        A running digest of what I've learned, plus my evolving identity as a learner —
+        preferences, level, goals, and style.
+      </p>
 
       <LivingProfile />
     </motion.div>
