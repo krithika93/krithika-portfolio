@@ -70,7 +70,7 @@ artifacts/portfolio/
     │   ├── diagram-frame.tsx                 # Wraps a diagram image with caption, fullscreen lightbox (radix Dialog), and Download PNG link; alt+caption required
     │   ├── footer.tsx                        # Global footer with links + "Built {buildDate}"
     │   ├── living-profile.tsx                # Polling widget for DeepTutor /living-profile JSON
-    │   ├── math.tsx                          # KaTeX renderer (strict:"ignore"); used for the dense reward equation in case-study Section 4
+    │   ├── math.tsx                          # KaTeX renderer (strict:true — full LaTeX faithfulness mode); used for the dense reward equation in case-study Section 4. throwOnError:false renders inline error nodes instead of crashing if invalid TeX is ever introduced.
     │   ├── mermaid-diagram.tsx               # Stub component (returns null); placeholder for future client-side mermaid.render() integration
     │   ├── nav.tsx                           # Top navigation bar
     │   ├── page-head.tsx                     # react-helmet-async per-page SEO: title, description,

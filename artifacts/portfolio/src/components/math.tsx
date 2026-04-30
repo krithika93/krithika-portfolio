@@ -13,7 +13,7 @@ export function Math({ tex, display = false }: MathProps) {
       katex.renderToString(tex, {
         displayMode: display,
         throwOnError: false,
-        strict: "ignore",
+        strict: true,
         output: "html",
       }),
     [tex, display],
