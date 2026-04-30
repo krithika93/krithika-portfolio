@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { LivingProfile } from "@/components/living-profile";
 import { PageHead } from "@/components/page-head";
+import { Callout } from "@/components/callout";
 import cardinalWalkImage from "@assets/3c6ba7fc-9566-49c4-ad66-897d4c970bc0_1777568745429.JPG";
 
 export default function Profile() {
@@ -42,6 +43,29 @@ export default function Profile() {
         >
           About Me
         </h2>
+
+        <div className="max-w-3xl mb-8">
+          <Callout
+            variant="apple-angle"
+            title="Status — Research Case Study, Not an Implemented System"
+          >
+            <p className="mb-3">
+              This page is a research case study: a synthesized architectural
+              proposal that composes published methods (Qwen2.5-VL, NodeRAG, GRPO,
+              NF4 QLoRA, Grounding DINO, and recent continuous-token reasoning
+              work) into a system designed to close the Perception Gap under a
+              16GB VRAM constraint. It is grounded in roughly ten papers from the
+              latent-reasoning and VLM literature.
+            </p>
+            <p>
+              Empirical work to date: a teacher-student distillation inference
+              probe on a 2,000-image dataset (Kaggle notebook, available on
+              request). The training pipeline (Stage 1 SFT + CSG, Stage 2
+              VMR-RLVR with GRPO) is specified here but not yet implemented. I'm
+              actively seeking collaborators with compute to take the next step.
+            </p>
+          </Callout>
+        </div>
 
         <p
           className="text-lg leading-relaxed text-foreground mb-10 max-w-3xl font-medium"
