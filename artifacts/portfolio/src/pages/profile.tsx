@@ -144,20 +144,25 @@ export default function Profile() {
             </p>
           </blockquote>
           <p>
-            I wrote the case study end-to-end alone, working in a "perpetual beta"
-            mindset — read, argue, refine, repeat — under a constraint I treated as the
-            design spec from day one: a single 16GB VRAM envelope. That number is not a
-            flex. A year ago I couldn't afford a 16GB laptop. The constraint is the
-            machine I now own, and designing the entire architecture to fit inside it is
-            partly engineering and partly a way of keeping faith with where I came from.
-            The empirical work so far is a teacher-student distillation inference probe
-            I ran on a 2,000-image dataset in a Kaggle notebook — a first concrete look
-            at whether the architectural intuitions hold under real images. The training
-            pipeline itself is not yet implemented; that's the next phase, and it's the
-            work I'm openly looking for collaborators on. I am, by temperament, a
-            continuous learner who cares about incremental consistency more than about
-            breakthroughs; ViMET is what happens when that temperament meets a problem
-            worth a year of careful argument.
+            I worked on the case study end-to-end alone, in a "perpetual beta" mindset —
+            read, argue, refine, repeat — under a constraint I treated as the design spec
+            from day one: a single 16GB VRAM envelope. That number is not a flex. A year
+            ago I couldn't afford a 16GB laptop. The constraint is the machine I now own,
+            and designing the entire architecture to fit inside it is partly engineering
+            and partly a way of keeping faith with where I came from. The empirical work
+            happened on Kaggle's free notebooks in February 2026: I ran a teacher-student
+            distillation setup on a 2,000-image VIMET dataset using Qwen2.5-VL as the
+            student, and I hit two walls simultaneously — repeated OOM cascades when both
+            teacher and student tried to share the 16GB envelope, and a 59% inference
+            accuracy ceiling that told me the standard distillation recipe was not going
+            to close the Perception Gap on its own. That was the moment the project
+            pivoted: I stopped trying to brute-force the existing recipe and went back to
+            the literature, reading roughly ten papers across latent reasoning and
+            adjacent VLM work, and the architecture I propose in the ViMET case study is
+            the result. The training pipeline (Stage 1 SFT + CSG, Stage 2 VMR-RLVR with
+            GRPO) is specified there but not yet implemented; that's the work I'm openly
+            looking for collaborators on. I am, by temperament, a continuous learner who
+            cares about incremental consistency more than about breakthroughs.
           </p>
           <blockquote
             className="not-prose my-8 border-l-4 border-l-[#3D7BFF] dark:border-l-blue-300 bg-[#3D7BFF]/5 dark:bg-[#3D7BFF]/10 px-6 py-4 rounded-r-md md:clear-right"
