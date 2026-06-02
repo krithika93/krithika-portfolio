@@ -86,7 +86,7 @@ export default function Profile() {
             data-testid="figure-noderag-diagram"
           >
             <img
-              src={`${import.meta.env.BASE_URL}images/noderag-diagram.png`}
+              src={`${import.meta.env.BASE_URL}images/noderag-diagram.webp`}
               alt="NodeRAG three-level abstraction diagram: physical attributes → relational context → conceptual meaning"
               className="w-full h-auto rounded-lg shadow-md ring-1 ring-border"
               loading="lazy"
