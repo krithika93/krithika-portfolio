@@ -81,6 +81,22 @@ export default function Profile() {
           className="prose prose-lg dark:prose-invert max-w-3xl text-muted-foreground leading-relaxed"
           data-testid="text-about-body"
         >
+          <figure
+            className="mb-6 md:float-right md:ml-8 md:mb-4 md:w-64 md:mt-1 not-prose"
+            data-testid="figure-noderag-diagram"
+          >
+            <img
+              src={`${import.meta.env.BASE_URL}images/noderag-diagram.png`}
+              alt="NodeRAG three-level abstraction diagram: physical attributes → relational context → conceptual meaning"
+              className="w-full h-auto rounded-lg shadow-md ring-1 ring-border"
+              loading="lazy"
+              data-testid="img-noderag-diagram"
+            />
+            <figcaption className="mt-2 text-sm italic text-muted-foreground leading-snug">
+              NodeRAG architecture: three-level abstraction bridging visual attributes
+              to conceptual meaning
+            </figcaption>
+          </figure>
           <p>
             ViMET began as a diagnosis rather than a design. I started by analyzing
             where contemporary Vision-Language Models break down, and the pattern was
