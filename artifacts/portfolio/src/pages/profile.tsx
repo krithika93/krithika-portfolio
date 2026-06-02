@@ -95,8 +95,12 @@ export default function Profile() {
             another — instead of on any single nameable thing. That observation is what
             motivated the NodeRAG-based approach at the core of ViMET, which represents a
             scene as a graph of elements and relations rather than a flat list of
-            detected objects. The field calls the underlying problem the Perception Gap,
-            and it is the wall I set out to understand and, eventually, to design around.
+            detected objects. That graph is built to reason across three levels of
+            abstraction — from physical visual attributes, up through the relational
+            context that binds them, to the conceptual and theological meaning the
+            arrangement points toward. The field calls the underlying problem the
+            Perception Gap, and it is the wall I set out to understand and, eventually,
+            to design around.
           </p>
           <blockquote
             className="not-prose my-8 border-l-4 border-l-[#3D7BFF] dark:border-l-blue-300 bg-[#3D7BFF]/5 dark:bg-[#3D7BFF]/10 px-6 py-4 rounded-r-md md:clear-right"
