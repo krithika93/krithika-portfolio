@@ -89,8 +89,14 @@ export default function Profile() {
             handle worst. The ViMET paper quantifies exactly this, reporting that
             contextual associations remain the most challenging category for VLMs,
             yielding only 54.5% accuracy. That finding framed the entire project. The
-            field calls the underlying problem the Perception Gap, and it is the wall I
-            set out to understand and, eventually, to design around.
+            hardest sub-case is when the metonymic vehicle is a spatial arrangement
+            rather than a discrete object: meaning then depends entirely on
+            configurational context — how elements are positioned relative to one
+            another — instead of on any single nameable thing. That observation is what
+            motivated the NodeRAG-based approach at the core of ViMET, which represents a
+            scene as a graph of elements and relations rather than a flat list of
+            detected objects. The field calls the underlying problem the Perception Gap,
+            and it is the wall I set out to understand and, eventually, to design around.
           </p>
           <blockquote
             className="not-prose my-8 border-l-4 border-l-[#3D7BFF] dark:border-l-blue-300 bg-[#3D7BFF]/5 dark:bg-[#3D7BFF]/10 px-6 py-4 rounded-r-md md:clear-right"
