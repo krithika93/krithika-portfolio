@@ -82,7 +82,7 @@ export default function Profile() {
           data-testid="text-about-body"
         >
           <figure
-            className="mb-6 md:float-right md:ml-8 md:mb-4 md:w-64 md:mt-1 not-prose"
+            className="not-prose my-8 clear-both"
             data-testid="figure-noderag-diagram"
           >
             <img
@@ -92,7 +92,7 @@ export default function Profile() {
               loading="lazy"
               data-testid="img-noderag-diagram"
             />
-            <figcaption className="mt-2 text-sm italic text-muted-foreground leading-snug">
+            <figcaption className="mt-3 text-sm italic text-muted-foreground leading-snug text-center">
               NodeRAG architecture: three-level abstraction bridging visual attributes
               to conceptual meaning
             </figcaption>
