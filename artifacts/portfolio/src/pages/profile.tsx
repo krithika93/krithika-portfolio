@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { LivingProfile } from "@/components/living-profile";
 import { PageHead } from "@/components/page-head";
 import { Callout } from "@/components/callout";
-import cardinalWalkImage from "@assets/3c6ba7fc-9566-49c4-ad66-897d4c970bc0_1777568745429.JPG";
 
 export default function Profile() {
   return (
@@ -72,67 +71,45 @@ export default function Profile() {
           data-testid="text-about-lead"
         >
           I started building ViMET in February 2026 and I'm three months in, working solo.
-          The intuition came earlier — a walk in June 2025 — and the vocabulary came later,
-          when I stumbled on the Visual Metonymy literature in December 2025 while reading
-          the work of professors I wanted to study under. I'm open to collaborators,
-          especially anyone working on edge-deployable VLMs or grounding under hardware
-          constraints.
+          The work began with a concrete diagnosis: contextual association is the single
+          hardest thing we ask a vision-language model to do, and the failure mode most
+          current systems share. I'm open to collaborators, especially anyone working on
+          edge-deployable VLMs or grounding under hardware constraints.
         </p>
 
         <div
           className="prose prose-lg dark:prose-invert max-w-3xl text-muted-foreground leading-relaxed"
           data-testid="text-about-body"
         >
-          <figure
-            className="mb-6 md:float-right md:ml-8 md:mb-4 md:w-64 md:mt-1 not-prose"
-            data-testid="figure-cardinal-walk"
-          >
-            <img
-              src={cardinalWalkImage}
-              alt="A female Northern Cardinal among pink blossoms — the photograph from the June 19, 2025 walk to the library that became the seed of ViMET."
-              className="w-full h-auto rounded-lg shadow-md ring-1 ring-border"
-              loading="lazy"
-              data-testid="img-cardinal-walk"
-            />
-            <figcaption className="mt-2 text-sm italic text-muted-foreground leading-snug">
-              The Cardinal walk — June 19, 2025. Three small literal cues that
-              somehow added up to grace.
-            </figcaption>
-          </figure>
           <p>
-            ViMET didn't start in a whitepaper. It started on June 19, 2025, on a walk to
-            the library, when I spent several minutes tracking a female Northern Cardinal —
-            the pale brown plumage, the sudden flash of red in her crest, the way the
-            light caught her when she finally settled and let me take the photo. I wasn't
-            looking at a bird. I was looking at three small, literal cues that had somehow
-            added up, in my head, to grace. The bird was the sign. The meaning was
-            somewhere else entirely. I walked the rest of the way to the library already
-            knowing that whatever name this had, I wanted to spend the next phase of my
-            life on it.
+            ViMET began as a diagnosis rather than a design. I started by analyzing
+            where contemporary Vision-Language Models break down, and the pattern was
+            consistent: contextual association — inferring an abstract concept from
+            concrete visual cues that never literally contain it — is the category they
+            handle worst. The ViMET paper quantifies exactly this, reporting that
+            contextual associations remain the most challenging category for VLMs,
+            yielding only 54.5% accuracy. That finding framed the entire project. The
+            field calls the underlying problem the Perception Gap, and it is the wall I
+            set out to understand and, eventually, to design around.
           </p>
           <blockquote
             className="not-prose my-8 border-l-4 border-l-[#3D7BFF] dark:border-l-blue-300 bg-[#3D7BFF]/5 dark:bg-[#3D7BFF]/10 px-6 py-4 rounded-r-md md:clear-right"
-            data-testid="pullquote-bird-was-sign"
+            data-testid="pullquote-contextual-association"
           >
             <p className="text-xl md:text-2xl italic font-medium leading-snug text-[#1E3FA0] dark:text-blue-100">
-              "The bird was the sign. The meaning was somewhere else entirely."
+              "Contextual associations remain the most challenging category for VLMs —
+              only 54.5% accuracy."
             </p>
           </blockquote>
           <p>
-            That's the gap the field calls the Perception Gap, and it's the one current
-            Vision-Language Models hit a wall against. They can name the bird in my photo
-            without flinching. They cannot make the leap from those specific feathers in
-            that specific light to an abstract concept the pixels never contained. I
-            started calling that wall the Literal Wall. In December 2025 I stumbled on
-            the Visual Metonymy literature while reading the work of professors I wanted
-            to study under, and the field gave me a name for what I'd already been
-            turning over for six months. From there I spent the early months of 2026
-            reading roughly ten papers in latent reasoning and adjacent VLM work —
-            Qwen2.5-VL, NodeRAG, GRPO, NF4 QLoRA, Grounding DINO, and the emerging
-            continuous-token-reasoning literature — and writing the architectural
-            argument that became the ViMET case study. I'm betting that latent reasoning
-            is the direction small, on-device models will move next, and ViMET is my
-            first attempt to argue precisely how.
+            The failure is specific. A VLM can name every object in an image without
+            flinching, yet it cannot make the leap from those particular pixels to an
+            abstract concept the pixels never encoded. I call that boundary the Literal
+            Wall. Reading across roughly ten papers in latent reasoning and adjacent VLM
+            work — Qwen2.5-VL, NodeRAG, GRPO, NF4 QLoRA, Grounding DINO, and the
+            emerging continuous-token-reasoning literature — I became convinced that
+            latent reasoning is the direction small, on-device models will move next, and
+            ViMET is my first attempt to argue precisely how.
           </p>
           <blockquote
             className="not-prose my-8 border-l-4 border-l-[#3D7BFF] dark:border-l-blue-300 bg-[#3D7BFF]/5 dark:bg-[#3D7BFF]/10 px-6 py-4 rounded-r-md md:clear-right"
@@ -144,52 +121,32 @@ export default function Profile() {
             </p>
           </blockquote>
           <p>
-            I worked on the case study end-to-end alone, in a "perpetual beta" mindset —
-            read, argue, refine, repeat — under a constraint I treated as the design spec
-            from day one: a single 16GB VRAM envelope. That number is not a flex. A year
-            ago I couldn't afford a 16GB laptop. The constraint is the machine I now own,
-            and designing the entire architecture to fit inside it is partly engineering
-            and partly a way of keeping faith with where I came from. The empirical work
-            happened on Kaggle's free notebooks in February 2026: I ran a teacher-student
-            distillation setup on a 2,000-image VIMET dataset using Qwen2.5-VL as the
-            student, and I hit two walls simultaneously — repeated OOM cascades when both
-            teacher and student tried to share the 16GB envelope, and a 59% inference
-            accuracy ceiling that told me the standard distillation recipe was not going
-            to close the Perception Gap on its own. That was the moment the project
-            pivoted: I stopped trying to brute-force the existing recipe and went back to
-            the literature, reading roughly ten papers across latent reasoning and
-            adjacent VLM work, and the architecture I propose in the ViMET case study is
-            the result. The training pipeline (Stage 1 SFT + CSG, Stage 2 VMR-RLVR with
-            GRPO) is specified there but not yet implemented; that's the work I'm openly
-            looking for collaborators on. I am, by temperament, a continuous learner who
-            cares about incremental consistency more than about breakthroughs.
+            I designed the architecture against a single 16GB VRAM envelope, treated as
+            the design spec from day one — the constraint any edge-deployable system has
+            to respect. The empirical work happened on Kaggle's free notebooks in
+            February 2026: a teacher-student distillation setup on a 2,000-image VIMET
+            dataset with Qwen2.5-VL as the student. I hit two walls at once — repeated
+            OOM cascades when teacher and student tried to share the 16GB envelope, and a
+            59% inference-accuracy ceiling that showed the standard distillation recipe
+            would not close the Perception Gap on its own. That result is what pivoted
+            the project from brute-forcing an existing recipe to designing a new one.
           </p>
           <blockquote
             className="not-prose my-8 border-l-4 border-l-[#3D7BFF] dark:border-l-blue-300 bg-[#3D7BFF]/5 dark:bg-[#3D7BFF]/10 px-6 py-4 rounded-r-md md:clear-right"
-            data-testid="pullquote-not-a-flex"
+            data-testid="pullquote-vram-envelope"
           >
             <p className="text-xl md:text-2xl italic font-medium leading-snug text-[#1E3FA0] dark:text-blue-100">
-              "That number is not a flex. A year ago I couldn't afford a 16GB
-              laptop."
+              "A single 16GB VRAM envelope, treated as the design spec from day one."
             </p>
           </blockquote>
           <p>
-            I should say one more thing, because it's the truest part. On the morning of
-            June 19, I had been chanting for about five hours. I wasn't planning to walk
-            to the library that day. The walk arrived as a quiet pull from the heart —
-            not a thought, not a plan, a force — and I went without stalling. In Hare
-            Krishna practice, that inner instruction has a name: Paramatma, the
-            Supersoul, the witness seated in the heart who guides when you've quieted
-            yourself enough to hear. I am a Hare Krishna, and the discipline I bring to
-            research is the same discipline I bring to my practice: chant, listen for
-            Paramatma, work in detachment, and stop performing for an audience that
-            isn't the one you're actually accountable to. The Cardinal walk was
-            Paramatma's instruction. The months after it were the response. ViMET is my
-            comeback — a launchpad, not a destination — and I care less about the result
-            than about the legacy of the contribution and the personal fulfillment of
-            working on a problem that actually interests me. My next chapter is to bring
-            that same constraint-driven, lived-in rigor to a place that builds
-            interpretive systems on real hardware. Apple is the room I have in mind.
+            The architecture I propose in the ViMET case study is the result of that
+            pivot. Its training pipeline — Stage 1 SFT + CSG, Stage 2 VMR-RLVR with GRPO
+            — is fully specified but not yet implemented, and that is the work I'm openly
+            looking for collaborators on. My next chapter is to bring the same
+            constraint-driven rigor to a team that builds interpretive systems on real
+            hardware, where closing the Perception Gap is a product problem and not only
+            a research one.
           </p>
         </div>
       </section>
